@@ -52,8 +52,8 @@ const Search = () => {
         <table className="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Reviews</th>
+              <th>Name of the Bike Network</th>
+              <th>Average Network User Reviews</th>
               <th>Location</th>
             </tr>
           </thead>

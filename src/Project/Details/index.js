@@ -93,7 +93,7 @@ function Details() {
 
   return (
     <div>
-      <h1>Details {resultId}</h1>
+      <h1>Network Details</h1>
       {city ? (
         <>
           <h2>{city.name}</h2>
@@ -106,7 +106,7 @@ function Details() {
               <thead>
                 <tr>
                   <th>Station</th>
-                  <th>Reviews</th>
+                  <th>Average User Review</th>
                   <th>Free Bikes</th>
                   <th>Last Updated</th>
                   <th>Location</th>
