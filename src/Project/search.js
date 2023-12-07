@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSearchTerm, fetchCities } from "./searchSlice";
 
 const Search = () => {
   const { search: urlSearchTerm } = useParams();
-  const [searchTerm, setSearchTerm] = useState(urlSearchTerm || "");
-  const [results, setResults] = useState(null);
+  const searchTerm = useSelector((state) => state.search.searchTerm);
+  const results = useSelector((state) => state.search.results);
+  const loading = useSelector((state) => state.search.loading);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const fetchCities = async (searchValue) => {
-    try {
-      const allCities = await client.findCities(searchValue);
-      const filteredCities = allCities.filter((city) =>
-        city.location.city.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      setResults(filteredCities);
-    } catch (error) {
-      console.error("Error fetching cities:", error);
-      setResults([]);
-    }
-  };
-
   useEffect(() => {
-    if (urlSearchTerm) {
-      fetchCities(urlSearchTerm);
-    }
-  }, [urlSearchTerm]);
+    const initializeSearch = async () => {
+      if (urlSearchTerm) {
+        // Set the search term in the Redux state
+        dispatch(updateSearchTerm(urlSearchTerm));
+        // Fetch cities based on the URL search term
+        await dispatch(fetchCities(urlSearchTerm));
+      }
+    };
+
+    // Call the initializeSearch function
+    initializeSearch();
+  }, [urlSearchTerm, dispatch]);
+
+  const handleSearch = () => {
+    dispatch(updateSearchTerm(searchTerm));
+    dispatch(fetchCities(searchTerm));
+    navigate(`/project/search/${searchTerm}`);
+  };
 
   return (
     <div>
@@ -36,19 +41,21 @@ const Search = () => {
           className="form-control w-75"
           placeholder="Search for a city..."
           value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
+          onChange={(event) => dispatch(updateSearchTerm(event.target.value))}
         />
         <button
           className="btn btn-primary"
           type="button"
-          onClick={() => fetchCities(searchTerm)}
+          onClick={handleSearch}
         >
           Search
         </button>
       </div>
 
       <h1>Results</h1>
-      {results && results.length > 0 ? (
+      {loading? ( 
+        <p>Loading... </p>
+      ) : results && results.length > 0 ? (
         <table className="table">
           <thead>
             <tr>

@@ -14,6 +14,9 @@ import Profile from "./profile";
 import Search from "./search";
 import Details from "./Details";
 import StationDetails from "./StationDetails";
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./store";
 
 // import CurrentUser from "./users/currentUser";
 
@@ -21,6 +24,7 @@ function Project() {
     // const [key, setKey] = useState("home"); // state variable 
 
     return (
+        <Provider store={store}>
         <div className="container-fluid">
             <div>
                     <Navigation />
@@ -28,7 +32,7 @@ function Project() {
                     <div>
                             <Routes>
                                 <Route path="/home" element={<Home />} />
-                                <Route path="/search" element={<Search/>} />
+                                <Route path="/search/*" element={<Search/>} />
                                 <Route path="/login" element={<LogIn />} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/profile" element={<Profile />} />
@@ -37,6 +41,7 @@ function Project() {
                             </Routes>
                         </div>
                     </div>
+                    </Provider>
             );
 }
 
