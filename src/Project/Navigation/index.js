@@ -9,7 +9,7 @@ import { FaPersonCircleQuestion } from "react-icons/fa6";
 function Navigation() {
     const links = {
         Home: <CgProfile />,
-        Search: <FaPersonCircleQuestion />,
+        search: <FaPersonCircleQuestion />,
         Login: <TfiDashboard />,
         Signup: <FaBook />,
         Profile: <BsCalendar4Week />,

@@ -19,21 +19,37 @@ const Search = () => {
       setResults(filteredCities);
     } catch (error) {
       console.error("Error fetching cities:", error);
-      setResults([]);
+      setResults([]); // Reset results in case of an error
     }
   };
 
   useEffect(() => {
-    // Only trigger the search if there's a non-empty searchTerm
-    if (searchTerm && searchTerm.trim() !== "") {
-      setQuery(searchTerm);
-      fetchCities(searchTerm);
-    } else {
-      // If searchTerm is empty, reset results and clear the search bar
-      setResults([]);
-      setQuery("");
-    }
-  }, [searchTerm, query, location]);
+    const fetchData = async () => {
+      try {
+        // Only trigger the search if there's a non-empty searchTerm
+        if (searchTerm && searchTerm.trim() !== "") {
+          setQuery(searchTerm);
+          await fetchCities(searchTerm);
+        } else {
+          // If searchTerm is empty, reset results
+          setResults([]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  
+    // Cleanup function to clear the search bar when the component is unmounted
+    return () => setQuery("");
+  }, [searchTerm, location]);
+
+  const handleSearch = async () => {
+    await fetchCities(query);
+    navigate(`/project/search/${query}`);
+    setQuery(""); // Clear the input field after initiating a search
+  };
 
   return (
     <div>
@@ -49,9 +65,7 @@ const Search = () => {
         <button
           className="btn btn-primary"
           type="button"
-          onClick={() => {
-            navigate(`/project/search/${query}`);
-          }}
+          onClick={handleSearch}
         >
           Search
         </button>
