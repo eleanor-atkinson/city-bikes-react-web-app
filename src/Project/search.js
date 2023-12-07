@@ -1,36 +1,39 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { updateSearchTerm, fetchCities } from "./searchSlice";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 
 const Search = () => {
-  const { search: urlSearchTerm } = useParams();
-  const searchTerm = useSelector((state) => state.search.searchTerm);
-  const results = useSelector((state) => state.search.results);
-  const loading = useSelector((state) => state.search.loading);
-  const dispatch = useDispatch();
+  const { searchTerm } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [results, setResults] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const fetchCities = async (searchTerm) => {
+    try {
+      const qwe = searchTerm || query;
+      const allCities = await client.findCities(qwe);
+      const filteredCities = allCities.filter((city) =>
+        city.location.city.toLowerCase().includes(qwe.toLowerCase())
+      );
+      setResults(filteredCities);
+    } catch (error) {
+      console.error("Error fetching cities:", error);
+      setResults([]);
+    }
+  };
 
   useEffect(() => {
-    const initializeSearch = async () => {
-      if (urlSearchTerm) {
-        // Set the search term in the Redux state
-        dispatch(updateSearchTerm(urlSearchTerm));
-        // Fetch cities based on the URL search term
-        await dispatch(fetchCities(urlSearchTerm));
-      }
-    };
-
-    // Call the initializeSearch function
-    initializeSearch();
-  }, [urlSearchTerm, dispatch]);
-
-  const handleSearch = () => {
-    dispatch(updateSearchTerm(searchTerm));
-    dispatch(fetchCities(searchTerm));
-    navigate(`/project/search/${searchTerm}`);
-  };
+    // Only trigger the search if there's a non-empty searchTerm
+    if (searchTerm && searchTerm.trim() !== "") {
+      setQuery(searchTerm);
+      fetchCities(searchTerm);
+    } else {
+      // If searchTerm is empty, reset results and clear the search bar
+      setResults([]);
+      setQuery("");
+    }
+  }, [searchTerm, query, location]);
 
   return (
     <div>
@@ -40,27 +43,27 @@ const Search = () => {
           type="text"
           className="form-control w-75"
           placeholder="Search for a city..."
-          value={searchTerm}
-          onChange={(event) => dispatch(updateSearchTerm(event.target.value))}
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
         />
         <button
           className="btn btn-primary"
           type="button"
-          onClick={handleSearch}
+          onClick={() => {
+            navigate(`/project/search/${query}`);
+          }}
         >
           Search
         </button>
       </div>
 
       <h1>Results</h1>
-      {loading? ( 
-        <p>Loading... </p>
-      ) : results && results.length > 0 ? (
+      {results && results.length > 0 ? (
         <table className="table">
           <thead>
             <tr>
-              <th>Name of the Bike Network</th>
-              <th>Average Network User Reviews</th>
+              <th>Name</th>
+              <th>Reviews</th>
               <th>Location</th>
             </tr>
           </thead>
@@ -68,9 +71,7 @@ const Search = () => {
             {results.map((result) => (
               <tr key={result.id}>
                 <td>
-                  <Link to={`/project/details/${result.id}`}>
-                    {result.name}
-                  </Link>
+                  <Link to={`/project/details/${result.id}`}>{result.name}</Link>
                 </td>
                 <td>
                   <h1>Reviews</h1>

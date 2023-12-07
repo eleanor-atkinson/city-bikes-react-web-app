@@ -32,7 +32,8 @@ function Project() {
                     <div>
                             <Routes>
                                 <Route path="/home" element={<Home />} />
-                                <Route path="/search/*" element={<Search/>} />
+                                <Route path="/search" element={<Search/>} />
+                                <Route path="/search/:searchTerm" element={<Search/>} />
                                 <Route path="/login" element={<LogIn />} />
                                 <Route path="/signup" element={<Signup />} />
                                 <Route path="/profile" element={<Profile />} />
