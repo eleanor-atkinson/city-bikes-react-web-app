@@ -10,9 +10,10 @@ function Navigation() {
     const links = {
         Home: <CgProfile />,
         search: <FaPersonCircleQuestion />,
+        Signin: <FaPersonCircleQuestion />,
         Login: <TfiDashboard />,
         Signup: <FaBook />,
-        Profile: <BsCalendar4Week />,
+        profile: <BsCalendar4Week />,
     };
     const { pathname } = useLocation();
 

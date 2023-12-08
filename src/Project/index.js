@@ -8,15 +8,18 @@ import { Routes, Route, Link } from "react-router-dom";
 // import store from "./store";
 // import { Provider } from "react-redux";
 import Navigation from "./Navigation";
-import LogIn from "./login";
-import Signup from "./signup";
-import Profile from "./profile";
 import Search from "./search";
 import Details from "./Details";
 import StationDetails from "./StationDetails";
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
+import ProfileOthers from "./profile-others";
+import Signin from "./users/signin";
+import Profile from "./profile";
+import UserTable from "./users/table";
+import Signup from "./users/signup";
+
 
 // import CurrentUser from "./users/currentUser";
 
@@ -32,11 +35,13 @@ function Project() {
                     <div>
                             <Routes>
                                 <Route path="/home" element={<Home />} />
+                                <Route path="/Signin" element={<Signin />} />
+                                <Route path="/Signup" element={<Signup />} />
+                                <Route path="/admin/users" element={<UserTable />} />
                                 <Route path="/search" element={<Search/>} />
                                 <Route path="/search/:searchTerm" element={<Search/>} />
-                                <Route path="/login" element={<LogIn />} />
-                                <Route path="/signup" element={<Signup />} />
                                 <Route path="/profile" element={<Profile />} />
+                                <Route path="profile/:userId" element={<ProfileOthers />} />
                                 <Route path="/details/:resultId" element={<Details/>} />
                                 <Route path="/details/:resultId/stationdetails/:stationId" element={<StationDetails />} />
                             </Routes>
