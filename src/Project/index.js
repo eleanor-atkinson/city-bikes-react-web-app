@@ -14,7 +14,7 @@ import StationDetails from "./StationDetails";
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
-import ProfileOthers from "./profile-others";
+import ProfileOthers from "./profile/profile-others";
 import Signin from "./users/signin";
 import Profile from "./profile";
 import UserTable from "./users/table";

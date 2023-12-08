@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { TfiDashboard } from "react-icons/tfi";
 import { FaBook } from "react-icons/fa";
 import { BsCalendar4Week } from "react-icons/bs";
 import { FaPersonCircleQuestion } from "react-icons/fa6";
@@ -11,7 +10,6 @@ function Navigation() {
         Home: <CgProfile />,
         search: <FaPersonCircleQuestion />,
         Signin: <FaPersonCircleQuestion />,
-        Login: <TfiDashboard />,
         Signup: <FaBook />,
         profile: <BsCalendar4Week />,
     };

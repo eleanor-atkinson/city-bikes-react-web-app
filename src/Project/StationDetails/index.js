@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import moment from "moment";
 import * as client from "../client";
+
 
 function StationDetails() {
   const { resultId, stationId } = useParams();
   const [city, setCity] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     // Get user's location
@@ -29,6 +31,13 @@ function StationDetails() {
     }
   }, []);
 
+  const fetchLikes = async () => {
+    console.log('Fetching likes for stationId:', stationId);
+    const likes = await client.getLikesForStation(stationId);
+    console.log('Fetched likes:', likes);
+    setLikes(likes);
+  }
+
   const fetchCity = async () => {
     try {
       const cityData = await client.findCityById(resultId);
@@ -39,7 +48,11 @@ function StationDetails() {
     }
   };
 
+
   useEffect(() => {
+    console.log('Before fetching likes');
+    fetchLikes();
+    console.log('After fetching likes');
     fetchCity();
   }, [resultId, stationId]);
 
@@ -59,9 +72,9 @@ function StationDetails() {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(lat1 * (Math.PI / 180)) *
-        Math.cos(lat2 * (Math.PI / 180)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+      Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
 
@@ -78,11 +91,21 @@ function StationDetails() {
           <p>Network: {city.name}</p>
           {city.stations && city.stations.length > 0 ? (
             <div>
+              {/* Display details for the selected station */}
               {city.stations
                 .filter((station) => station.id === stationId)
                 .map((station) => (
                   <div key={station.id}>
                     <h3>{station.name}</h3>
+                    <button onClick={() => {
+                      client.userLikesStation(station.id, {
+                        name: station.name,
+                        stationId: station.id,
+                      });
+                    }}
+                      className="btn btn-success float-end">
+                      Like
+                    </button>
                     <p>Free Bikes: {station.free_bikes}</p>
                     <p>Last Updated: {formatDateTime(station.timestamp)}</p>
                     <p>
@@ -99,14 +122,34 @@ function StationDetails() {
                       Distance from you (km):{" "}
                       {userLocation
                         ? calculateDistance(
-                            userLocation.latitude,
-                            userLocation.longitude,
-                            station.latitude,
-                            station.longitude
-                          ).toFixed(2)
+                          userLocation.latitude,
+                          userLocation.longitude,
+                          station.latitude,
+                          station.longitude
+                        ).toFixed(2)
                         : "-"}
                     </p>
                     <p><h4>Reviews</h4></p>
+                    <div>
+                      <h3>Likes</h3>
+                      <div className="list-group">
+                        {likes &&
+                          likes
+                            .filter((like) => like.stationId === station.id)
+                            .map((like) => (
+                              <Link
+                                key={like._id}
+                                to={`/project/profile/${like.user._id}`}
+                                className="list-group-item list-group-item-action"
+                              >
+                                {/* {//for some reason I'm not able to get user.firstName or user.lastName } */}
+                                {like.user.username}
+                              </Link>
+                            ))
+                        }
+                      </div>
+                      <pre>{JSON.stringify(likes, null, 2)}</pre>
+                    </div>
                     {/* Add Reviews section if available */}
                     {/* You can customize the Reviews section based on your data structure */}
                     {/* Example: <p>Reviews: {station.reviews}</p> */}
