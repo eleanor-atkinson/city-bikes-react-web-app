@@ -78,8 +78,9 @@ function Profile() {
                   {
                     likes.map(like =>
                       <Link className="list-group-item"
-                      to={`/project/details/${like.stationId}`}>
+                      to={`/project/details/${like.station.networkId}/stationdetails/${like.stationId}`}>
                         {like.station.name}
+                        {like.station.networkId}
                       </Link>)
                   }
                   </div>

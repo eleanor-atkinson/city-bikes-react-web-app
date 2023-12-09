@@ -101,11 +101,13 @@ function StationDetails() {
                       client.userLikesStation(station.id, {
                         name: station.name,
                         stationId: station.id,
+                        networkId: city.id,
                       });
                     }}
                       className="btn btn-success float-end">
                       Like
                     </button>
+                    {city.id}
                     <p>Free Bikes: {station.free_bikes}</p>
                     <p>Last Updated: {formatDateTime(station.timestamp)}</p>
                     <p>
@@ -142,7 +144,7 @@ function StationDetails() {
                                 to={`/project/profile/${like.user._id}`}
                                 className="list-group-item list-group-item-action"
                               >
-                                {/* {//for some reason I'm not able to get user.firstName or user.lastName } */}
+                                {/* {//for some reason I'm not able to get user.firstName or user.lastName} */}
                                 {like.user.username}
                               </Link>
                             ))
