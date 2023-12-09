@@ -37,8 +37,8 @@ function Project() {
                             <Routes>
                             <Route path="/*" element={<Navigate to="/home"/>} />
                                 <Route path="/home" element={<Home />} />
-                                <Route path="/Signin" element={<Signin />} />
-                                <Route path="/Signup" element={<Signup />} />
+                                <Route path="/login" element={<Signin />} />
+                                <Route path="/register" element={<Signup />} />
                                 <Route path="/admin/users" element={<UserTable />} />
                                 <Route path="/search" element={<Search/>} />
                                 <Route path="/search/:searchTerm" element={<Search/>} />

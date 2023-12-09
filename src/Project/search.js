@@ -53,6 +53,7 @@ const Search = () => {
 
   return (
     <div>
+      <br></br>
       <h1>Search</h1>
       <div className="input-group mb-3">
         <input

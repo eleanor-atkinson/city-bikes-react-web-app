@@ -40,11 +40,12 @@ function Home() {
 
   return (
     <div>
-      <h1>Home</h1>
+      <br></br>
       {authData && authData.currentUser && (
         <h1> Welcome {authData.currentUser.username}, let's go for a ride. </h1>
       )}
       <hr></hr>
+
       {newestMember && (
         <div>
           <h2>Welcome Our Newest Member!</h2>

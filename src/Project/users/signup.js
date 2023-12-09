@@ -24,7 +24,8 @@ function Signup() {
   };
   return (
     <div>
-      <h1>Signup</h1>
+      <br></br>
+      <h1>Register/Signup</h1>
       {error && <div>{error}</div>}
       <input
         value={credentials.username}

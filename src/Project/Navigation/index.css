@@ -2,3 +2,9 @@
     background-color: white; 
     color:black !important;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.font-custom {
+    font-family: 'Fjalla One', sans-serif;
+}

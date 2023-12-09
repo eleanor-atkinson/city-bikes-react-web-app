@@ -8,17 +8,17 @@ import './index.css';
 
 function Navigation() {
     const links = {
-        Home: <CgProfile />,
+        home: <CgProfile />,
         search: <FaPersonCircleQuestion />,
-        Signin: <FaPersonCircleQuestion />,
-        Signup: <FaBook />,
+        login: <FaPersonCircleQuestion />,
+        register: <FaBook />,
         profile: <BsCalendar4Week />,
     };
     const { pathname } = useLocation();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-success font-weight-bold">
-            <span className="navbar-brand text-light">Bike Project</span>
+            <span className="navbar-brand text-light font-custom"> CityBikes.com</span>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="nav">
                     {Object.entries(links).map(([link, icon], index) => (

@@ -86,8 +86,12 @@ function StationDetails() {
       {city ? (
         <>
           <h2>Station Details</h2>
+          {city.location && (
           <p>City: {city.location.city}</p>
+          )}
+          {city.location && (
           <p>Country: {city.location.country}</p>
+          )}
           <p>Network: {city.name}</p>
           {city.stations && city.stations.length > 0 ? (
             <div>
