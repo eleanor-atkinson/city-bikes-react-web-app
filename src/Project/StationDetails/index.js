@@ -141,7 +141,7 @@ function StationDetails() {
                             .map((like) => (
                               <Link
                                 key={like._id}
-                                to={`/project/profile/${like.user._id}`}
+                                to={`/profile/${like.user._id}`}
                                 className="list-group-item list-group-item-action"
                               >
                                 {/* {//for some reason I'm not able to get user.firstName or user.lastName} */}

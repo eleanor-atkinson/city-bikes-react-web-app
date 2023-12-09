@@ -1,5 +1,5 @@
 import Home from "./home";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 // import { useState } from "react";
 // import UserList from "./users/list";
 // import UserDetails from "./users/details";
@@ -34,6 +34,7 @@ function Project() {
                     </div>
                     <div>
                             <Routes>
+                            <Route path="/*" element={<Navigate to="/home"/>} />
                                 <Route path="/home" element={<Home />} />
                                 <Route path="/Signin" element={<Signin />} />
                                 <Route path="/Signup" element={<Signup />} />

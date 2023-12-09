@@ -47,7 +47,7 @@ const Search = () => {
 
   const handleSearch = async () => {
     await fetchCities(query);
-    navigate(`/project/search/${query}`);
+    navigate(`/search/${query}`);
     setQuery(""); // Clear the input field after initiating a search
   };
 
@@ -85,7 +85,7 @@ const Search = () => {
             {results.map((result) => (
               <tr key={result.id}>
                 <td>
-                  <Link to={`/project/details/${result.id}`}>{result.name}</Link>
+                  <Link to={`/details/${result.id}`}>{result.name}</Link>
                 </td>
                 <td>
                   <h1>Reviews</h1>

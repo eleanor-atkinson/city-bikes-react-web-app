@@ -117,7 +117,7 @@ function Details() {
                 {sortStationsByDistance(city.stations).map((station) => (
                   <tr key={station.id}>
                     <td>
-                      <Link to={`/project/details/${resultId}/stationdetails/${station.id}`}>
+                      <Link to={`/details/${resultId}/stationdetails/${station.id}`}>
                         {station.name}
                       </Link>
                     </td>

@@ -23,7 +23,7 @@ function Navigation() {
                     {Object.entries(links).map(([link, icon], index) => (
                         <li className="nav-item" key={index}>
                             <Link
-                                to={`/Project/${link}`}
+                                to={`/${link}`}
                                 className={`nav-link text-light font-weight-bold ${pathname.includes(link) && "active"}`}
                             >
                                <span className="float-right pr-3"> {icon} </span>

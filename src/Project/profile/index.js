@@ -32,7 +32,7 @@ function Profile() {
   };
   const signout = async () => {
     await client.signout();
-    navigate("/project/signin");
+    navigate("/signin");
   };
 
   // const [currentUser, setCurrentUser] = useState({});
@@ -69,7 +69,7 @@ function Profile() {
             <button onClick={signout}>
               Signout
               </button>
-              <Link to="/project/admin/users" className="btn btn-warning w-100">
+              <Link to="/admin/users" className="btn btn-warning w-100">
                 Users
                 </Link>
                 <hr/>
@@ -78,7 +78,7 @@ function Profile() {
                   {
                     likes.map(like =>
                       <Link className="list-group-item"
-                      to={`/project/details/${like.station.networkId}/stationdetails/${like.stationId}`}>
+                      to={`/details/${like.station.networkId}/stationdetails/${like.stationId}`}>
                         {like.station.name}
                         {like.station.networkId}
                       </Link>)
