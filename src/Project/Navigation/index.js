@@ -4,6 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaBook } from "react-icons/fa";
 import { BsCalendar4Week } from "react-icons/bs";
 import { FaPersonCircleQuestion } from "react-icons/fa6";
+import './index.css';
 
 function Navigation() {
     const links = {
