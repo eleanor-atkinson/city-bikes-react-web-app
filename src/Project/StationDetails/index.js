@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import moment from "moment";
 import * as client from "../client";
-
+import { useAuth } from "../useAuth";
 
 function StationDetails() {
   const { resultId, stationId } = useParams();
   const [city, setCity] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [likes, setLikes] = useState([]);
+  const authData = useAuth();
 
   useEffect(() => {
     // Get user's location
@@ -88,10 +89,10 @@ function StationDetails() {
         <>
           <h3>Station Details</h3>
           {city.location && (
-          <p>City: {city.location.city}</p>
+            <p>City: {city.location.city}</p>
           )}
           {city.location && (
-          <p>Country: {city.location.country}</p>
+            <p>Country: {city.location.country}</p>
           )}
           <p>Network: {city.name}</p>
           {city.stations && city.stations.length > 0 ? (
@@ -102,16 +103,29 @@ function StationDetails() {
                 .map((station) => (
                   <div key={station.id}>
                     <h3>{station.name}</h3>
-                    <button onClick={() => {
-                      client.userLikesStation(station.id, {
-                        name: station.name,
-                        stationId: station.id,
-                        networkId: city.id,
-                      });
-                    }}
-                      className="btn btn-success float-end">
-                      Like
-                    </button>
+
+                    <div>
+                      <button
+                        onClick={() => {
+                          if (!authData || !authData.currentUser) {
+                            // User is not logged in, redirect to login page
+                            alert("Please log in to like the station."); // Change "/login" to your actual login route
+                          } else {
+                            // User is logged in, allow them to like the station
+                            client.userLikesStation(station.id, {
+                              name: station.name,
+                              stationId: station.id,
+                              networkId: city.id,
+                            });
+                            window.location.reload();
+                          }
+                        }}
+                        className="btn btn-success float-end"
+                      >
+                        Like
+                      </button>
+                    </div>
+
                     {city.id}
                     <p>Free Bikes: {station.free_bikes}</p>
                     <p>Last Updated: {formatDateTime(station.timestamp)}</p>
