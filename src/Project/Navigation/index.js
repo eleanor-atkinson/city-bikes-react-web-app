@@ -15,6 +15,8 @@ function Navigation() {
         profile: <BsCalendar4Week />,
     };
     const { pathname } = useLocation();
+    // Check if the current route is the user's own profile
+    const isUserProfile = pathname === "/profile";
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-success font-weight-bold">
@@ -23,11 +25,11 @@ function Navigation() {
                 <ul className="nav">
                     {Object.entries(links).map(([link, icon], index) => (
                         <li className="nav-item" key={index}>
-                            <Link
-                                to={`/${link}`}
-                                className={`nav-link text-light font-weight-bold ${pathname.includes(link) && "active"}`}
+                              <Link
+                                to={link === "profile" && !isUserProfile ? "/profile" : `/${link}`}
+                                className={`nav-link text-light font-weight-bold ${link === "profile" && isUserProfile && "active"} ${link !== "profile" && pathname.includes(link) && "active"}`}
                             >
-                               <span className="float-right pr-3"> {icon} </span>
+                                <span className="float-right pr-3"> {icon} </span>
                                 {link}
                             </Link>
                         </li>
