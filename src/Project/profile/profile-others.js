@@ -17,8 +17,6 @@ function ProfileOthers() {
     setLikedStations(likes.map((like) => like.station));
   };
     
-
-
     useEffect(() => {
         fetchUser();
 

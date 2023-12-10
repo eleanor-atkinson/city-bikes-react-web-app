@@ -8,3 +8,17 @@
 .font-custom {
     font-family: 'Fjalla One', sans-serif;
 }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link span {
+    margin-right: 10px; 
+  }
+
+  .navbar-brand {
+    padding-left: 20px; 
+    margin-right: 20px; 
+  }

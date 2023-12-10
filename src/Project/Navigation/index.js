@@ -19,7 +19,7 @@ function Navigation() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-success font-weight-bold">
             <span className="navbar-brand text-light font-custom"> CityBikes.com</span>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="nav">
                     {Object.entries(links).map(([link, icon], index) => (
                         <li className="nav-item" key={index}>

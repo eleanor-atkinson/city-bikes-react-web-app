@@ -1,4 +1,4 @@
-import Home from "./home";
+import Home from "./Home";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 // import { useState } from "react";
 // import UserList from "./users/list";
@@ -29,11 +29,11 @@ function Project() {
 
     return (
         <Provider store={store}>
-        <div className="container-fluid">
+        <div>
             <div>
                     <Navigation />
                     </div>
-                    <div className="container-fluid px-3">
+                    <div className="container-fluid px-5">
                             <Routes>
                             <Route path="/*" element={<Navigate to="/home"/>} />
                                 <Route path="/home" element={<Home />} />

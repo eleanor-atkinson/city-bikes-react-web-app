@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { findAllUsers } from './users/client';
+import { findAllUsers } from '../users/client';
 import { Link } from 'react-router-dom';
-import { useAuth } from "./useAuth";
+import { useAuth } from "../useAuth";
+import { MdDirectionsBike } from "react-icons/md";
+import "./index.css";
 
 function Home() {
+  // State variables
   const [newestMember, setNewestMember] = useState(null);
   const authData = useAuth();
 
+  // useEffect to fetch users and find the newest member on component mount (when home screen renders)
+  // runs once
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -25,12 +30,18 @@ function Home() {
     fetchUsers();
   }, []); // Empty dependency array means this effect will run once when the component mounts
 
-  useEffect(() => {
-    if (authData && authData.currentUser) {
-      // Fetch the user's likes or perform other actions
-    }
-  }, [authData]);
+
+  // will run when there is a change in the authentication data dependency 
+
+  // // useEffect to perform actions if there is a change in authentication data
+  // useEffect(() => {
+  //   if (authData && authData.currentUser) {
+  //     // Fetch the user's likes or perform other actions
+  //   }
+  // }, [authData]);
   
+
+  // useEffect to log the value of newestMember when it changes
   useEffect(() => {
     console.log(newestMember); // Log the value of newestMember
     if (newestMember) {
@@ -38,14 +49,20 @@ function Home() {
     }
   }, [newestMember]);
 
+  // reflects updated state and props after effects have been applied 
   return (
     <div>
       <br></br>
       {authData && authData.currentUser && (
+        <div>
         <h1> Welcome {authData.currentUser.username}, let's go for a ride. </h1>
+        </div>
       )}
+      <MdDirectionsBike className="bike-icon"/>
       <hr></hr>
-
+      <h3>Find bike stations in any city and share your favorites!</h3>
+      <div className="button btn btn-info"> <Link to={`/search`} className="white-text-link">Click here to search for a city!</Link></div>
+      <hr></hr>
       {newestMember && (
         <div>
           <h2>Welcome Our Newest Member!</h2>
