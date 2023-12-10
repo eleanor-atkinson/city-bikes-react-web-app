@@ -83,9 +83,10 @@ function StationDetails() {
 
   return (
     <div>
+      <br></br>
       {city ? (
         <>
-          <h2>Station Details</h2>
+          <h3>Station Details</h3>
           {city.location && (
           <p>City: {city.location.city}</p>
           )}

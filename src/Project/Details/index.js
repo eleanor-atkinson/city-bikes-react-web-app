@@ -93,6 +93,7 @@ function Details() {
 
   return (
     <div>
+      <br></br>
       <h1>Network Details</h1>
       {city ? (
         <>

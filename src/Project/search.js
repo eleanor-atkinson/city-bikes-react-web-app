@@ -78,7 +78,7 @@ const Search = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Reviews</th>
+              
               <th>Location</th>
             </tr>
           </thead>
@@ -88,9 +88,7 @@ const Search = () => {
                 <td>
                   <Link to={`/details/${result.id}`}>{result.name}</Link>
                 </td>
-                <td>
-                  <h1>Reviews</h1>
-                </td>
+             
                 <td>
                   {result.location.city}, {result.location.country}
                 </td>
