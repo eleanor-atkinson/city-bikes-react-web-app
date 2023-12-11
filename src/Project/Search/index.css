@@ -8,8 +8,9 @@
     padding-top: 2em;
     padding-left: 1.5em;
     padding-bottom: 1em;
+    color: black;
   }
-
+/* 
   .green-card-one {
     background-color: rgb(34, 139, 34);
     border-width: 5px;
@@ -17,21 +18,12 @@
     color: white;
     padding: 2em;
     width: 60%;
-    height: 40%;
     clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
     
     /* clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 2% 49%, 0% 0%); */
-  }
+ 
 
   .green-link {
     color: green;
   }
 
-  .background-color-card {
-    background-color: rgb(46, 186, 46);
-    color: white;
-    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
-    width: 60%;
-    padding: 2em;
-    padding-bottom: 4em;
-  }

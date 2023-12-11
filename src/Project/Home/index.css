@@ -1,17 +1,22 @@
 .smile-icon {
   font-size: 6vw; /* 5% of the viewport width. */
   padding-left: 1em;
+  padding-right: 20px;
+  padding-top: 5px;
 }
 
 .thumbs-up-icon {
   font-size: 6vw; /* 5% of the viewport width. */
   padding-left: 1em;
   vertical-align: top;
+  padding-right: 20px;
+  padding-top: 5px;
 }
 
 .bike-icon {
     font-size: 6vw; /* 5% of the viewport width. */
     color: rgb(112, 228, 112);
+    vertical-align: bottom;
   }
 
   .bike-icon-two {
@@ -48,47 +53,29 @@
     /* margin-bottom: 3vm; */
   }
 
-  .background-color-card {
-    background-color: rgb(46, 186, 46);
-    color: white;
-    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
-    width: 60%;
-    padding: 2em;
-    padding-bottom: 4em;
-  }
 
-.green-card-one {
-    background-color: rgb(34, 139, 34);
+  .green-text-bubble {
+    background-color: green;
     color: white;
-    padding: 2em;
-    width: 60%;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin: 0px 0;
+    width: 85% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
     clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
-    /* clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 2% 49%, 0% 0%); */
+    font-size: min(max(1.5vw, 16px), 4vw); /* 1.5vw is the default font size based on the viewport width.
+    14px is the minimum font size.
+    4vw is the maximum font size. */
   }
-
-  .title-text {
-    font-weight: bold;
-    padding-bottom: 0.5em;
-    font-size: 15px; /* Default font size */
   
-    /* Adjust font size for smaller screens */
-    @media (max-width: 600px) {
-      font-size: 4vw; /* Increase font size for screens up to 600px */
-    }
+  /* Style for text inside green card one */
+  .green-text-bubble div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   
-    /* Adjust font size for larger screens */
-    @media (min-width: 1200px) {
-      font-size: 2vw; /* Decrease font size for screens larger than 1200px */
-    }
-  }
-
-  .green-card {
-    background-color: rgb(34, 139, 34);
-    color: white;
-    padding: 1em;
-    width: 50%;
-  }
-
   .button-padding {
     margin-bottom: 3em;
   }
@@ -97,6 +84,25 @@
    color: white;
   }
 
-  .big-title-text {
-    font-size: 5vw; 
+  .styling-for-click {
+    padding-top: 10px;
+    font-size: min(max(1.5vw, 16px), 4vw);
+  }
+  
+  .light-green-text-bubble {
+    background-color: rgb(46, 186, 46);
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin: 0px 0;
+    width: 80% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
+    font-size: min(max(1.5vw, 16px), 4vw);
+  }
+
+  .light-green-text-bubble div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
