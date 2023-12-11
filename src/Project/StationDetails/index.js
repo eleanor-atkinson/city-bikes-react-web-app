@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import moment from "moment";
 import * as client from "../client";
 import { useAuth } from "../useAuth";
+import "./index.css";
 
 function StationDetails() {
   const { resultId, stationId } = useParams();
@@ -87,14 +88,6 @@ function StationDetails() {
       <br></br>
       {city ? (
         <>
-          <h3>Station Details</h3>
-          {city.location && (
-            <p>City: {city.location.city}</p>
-          )}
-          {city.location && (
-            <p>Country: {city.location.country}</p>
-          )}
-          <p>Network: {city.name}</p>
           {city.stations && city.stations.length > 0 ? (
             <div>
               {/* Display details for the selected station */}
@@ -102,8 +95,10 @@ function StationDetails() {
                 .filter((station) => station.id === stationId)
                 .map((station) => (
                   <div key={station.id}>
-                    <h3>{station.name}</h3>
-
+                    <h1>Bike Station: {station.name}</h1>
+                    <div className="bike-station-details-image pb-2">
+          <img src="../bike-station-details.jpg" class="img-fluid" alt="Description of the image"></img>
+       </div>
                     <div>
                       <button
                         onClick={() => {
@@ -120,12 +115,23 @@ function StationDetails() {
                             window.location.reload();
                           }
                         }}
-                        className="btn btn-success float-end"
+                        className="btn btn-primary float-end btn-lg"
                       >
                         Like
                       </button>
                     </div>
-
+                    {city.location && (
+            <div className="green-text-bubble-station p-2 pb-3">Located in {city.location.city}...<br></br></div>
+          )}
+           <div className="light-green-text-bubble-station p-2 pb-3">
+            In the network, "{city.name}."
+           </div>
+           <div className="green-text-bubble-station-long p-2 pb-3">There are currently {station.free_bikes} free bikes at this station.
+          </div>
+          <div className="light-green-text-bubble-station-long p-2 pb-4">
+          The station details were last updated on {formatDateTime(station.timestamp)}.
+          <br></br>
+          </div>
                     {city.id}
                     <p>Free Bikes: {station.free_bikes}</p>
                     <p>Last Updated: {formatDateTime(station.timestamp)}</p>

@@ -120,9 +120,11 @@ function Details() {
                   {sortStationsByDistance(city.stations).map((station) => (
                     <tr key={station.id}>
                       <td>
-                        <Link className="links" to={`/details/${resultId}/stationdetails/${station.id}`}>
+                        <button className="btn btn-light">
+                        <Link className="text-success" to={`/details/${resultId}/stationdetails/${station.id}`}>
                           {station.name}
                         </Link>
+                        </button>
                       </td>
 
                       <td>{station.free_bikes}</td>
@@ -167,16 +169,18 @@ function Details() {
                 {sortStationsByDistance(city.stations).map((station) => (
                   <tr key={station.id} className="station-details-small-screen">
                     <td>
-                    <Link to={`/details/${resultId}/stationdetails/${station.id}`}>
+                    <button className="btn btn-light">
+                    <Link className="text-success"  to={`/details/${resultId}/stationdetails/${station.id}`}>
                       <p>{station.name}</p>
                     </Link>
+                    </button>
                     </td>
                     <td>
-                    <p>Free Bikes: {station.free_bikes}</p>
+                    <p>{station.free_bikes}</p>
                     </td>
                     <td>
                     <p>
-                      Distance from you:{" "}
+                      {" "}
                       {userLocation
                         ? calculateDistance(
                             userLocation.latitude,

@@ -1,0 +1,80 @@
+.green-text-bubble-station {
+    background-color: green;
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin: 0px 0;
+    width: 30% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
+    font-size: min(max(1.5vw, 16px), 4vw); /* 1.5vw is the default font size based on the viewport width.
+    14px is the minimum font size.
+    4vw is the maximum font size. */
+  }
+  
+  /* Style for text inside green card one */
+  .green-text-bubble-station div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .light-green-text-bubble-station {
+    background-color: rgb(46, 186, 46);
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin: 0px 0;
+    width: 40% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
+    font-size: min(max(1.5vw, 16px), 4vw);
+  }
+
+  .light-green-text-bubble-station div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .green-text-bubble-station-long {
+    background-color: green;
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin: 0px 0;
+    width: 50% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
+    font-size: min(max(1.5vw, 16px), 4vw); /* 1.5vw is the default font size based on the viewport width.
+    14px is the minimum font size.
+    4vw is the maximum font size. */
+  }
+  
+  /* Style for text inside green card one */
+  .green-text-bubble-station-long div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
+  .light-green-text-bubble-station-long {
+    background-color: rgb(46, 186, 46);
+    color: white;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    margin: 0px 0;
+    width: 60% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
+    font-size: min(max(1.5vw, 16px), 4vw);
+  }
+
+  .light-green-text-bubble-station-long div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+ 

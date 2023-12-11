@@ -76,20 +76,23 @@ const Search = () => {
       {results && results.length > 0 ? (
         <div>
         <div className="background-color-card">All of the Bike Networks in Your City!</div>
-        <table className="table green-card-one">
+        <table className="search-results-table">
           <thead>
             <tr>
               
-              <th><br></br>Bike Network Name</th>
+              <th className="p-2"><br></br>Bike Network Name</th>
               
-              <th>Location</th>
+              <th><br></br>Location</th>
             </tr>
           </thead>
           <tbody>
             {results.map((result) => (
               <tr key={result.id}>
                 <td>
+                  <button className="btn btn-light m-2">
+                    
                   <Link className="green-link" to={`/details/${result.id}`}>{result.name}</Link>
+                  </button>
                 </td>
              
                 <td>

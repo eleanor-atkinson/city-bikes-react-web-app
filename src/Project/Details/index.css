@@ -15,14 +15,17 @@
     color: white; /* White text color */
     padding: 10px;
     text-align: left;
+    
   }
   
   /* Style for table body cells */
   .table td {
-    background-color: green; /* Green background */
-    color: white; /* White text color */
-    border: 1px solid #ddd;
+    background-color: rgb(112, 228, 112);
+    color: green;
+    /* border: 1px solid #ddd; */
     padding: 10px;
+    border-width: 5px;
+    border-color: lightgreen;
   }
   
   /* Add alternating background color to table rows */
@@ -31,11 +34,16 @@
   }
   
   /* Additional style for small screen table */
-  .small-screen-table th,
-  .small-screen-table td {
+  .small-screen-table th {
     background-color: green; /* Green background */
     color: white; /* White text color */
+  }
+  .small-screen-table td {
+    background-color: rgb(112, 228, 112);
+    color: green;
     padding: 10px;
+    border-width: 5px;
+    border-color: lightgreen;
   }
   
   /* Add alternating background color to small screen table rows */
@@ -55,7 +63,7 @@
   }
   
   .green-card-one {
-    background-color: rgb(34, 139, 34);
+    background-color: green;
     color: white;
     /* padding: 2em; */
     width: 40%;
