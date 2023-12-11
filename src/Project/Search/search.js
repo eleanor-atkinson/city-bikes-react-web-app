@@ -74,11 +74,13 @@ const Search = () => {
       </div>
       <h2>Results:</h2>
       {results && results.length > 0 ? (
+        <div>
+        <div className="background-color-card">All of the Bike Networks in Your City!</div>
         <table className="table green-card-one">
           <thead>
-          <div className="small-title-text">All of the Bike Networks in Your City!</div>
             <tr>
-              <th>Bike Network Name</th>
+              
+              <th><br></br>Bike Network Name</th>
               
               <th>Location</th>
             </tr>
@@ -104,12 +106,13 @@ const Search = () => {
                 <br></br>
                 <br></br>
         </table>
+        </div>
       ) : (
         <p>No results found</p>
       )}
       {results && results.length > 0 ? (
       <div className="background-color-card">
-      <h2>Click on a bike network to learn more!</h2>
+      Click on a bike network to learn more!
       </div>
       ) : ( " ")}
     </div>

@@ -98,7 +98,8 @@ function Details() {
       {city ? (
         <>
           <h1>{city.name} Network Details</h1>
-          <div className="green-card-one">Located in the one of a kind city of <b>{city.location.city}</b>!</div>
+          <div className="green-text-bubble"><br></br>Located in the one of a kind city of <b>{city.location.city}</b>!<br></br><br></br></div><br></br>
+          <div className="light-green-text-bubble"><br></br>Click on a bike station to learn more!<br></br><br></br></div>
           {/* <div className="background-color-card">In the beautiful country of: <b>{city.location.country}</b></div> */}
           <br></br>
 
@@ -154,6 +155,7 @@ function Details() {
               </table>
 
               <div className="small-screen-table">
+                <table>
               <thead>
         <tr>
           <th>Station</th>
@@ -189,6 +191,7 @@ function Details() {
                     </tr>
                 ))}
                     </tbody>
+                    </table>
               </div>
             </>
           ) : (

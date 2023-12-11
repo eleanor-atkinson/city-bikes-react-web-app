@@ -42,15 +42,37 @@
   .small-screen-table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
   }
+
+  /* Use media query to hide/show tables based on screen size */
+@media only screen and (max-width: 650px) {
+    .table {
+      display: none;
+    }
+  
+    .small-screen-table {
+      display: table;
+    }
+  }
   
   .green-card-one {
     background-color: rgb(34, 139, 34);
     color: white;
     /* padding: 2em; */
-    width: 30%;
-    clip-path: polygon(0% 25%, 100% 25%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
+    width: 40%;
+    /* clip-path: polygon(0% 25%, 100% 25%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
     /* clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 2% 49%, 0% 0%); */
+    /* width: 85% !important; */
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
+    font-size: min(max(1.5vw, 16px), 4vw);
   }
+
+   /* Style for text inside green card one */
+   .green-card-one div {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 
   .background-color-card {
     background-color: rgb(46, 186, 46);
@@ -59,4 +81,5 @@
     width: 60%;
     padding: 2em;
     padding-bottom: 4em;
+    font-size: min(max(2vw, 16px), 4vw);
   }
