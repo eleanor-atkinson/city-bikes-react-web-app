@@ -97,8 +97,8 @@ function StationDetails() {
                   <div key={station.id}>
                     <h1>Bike Station: {station.name}</h1>
                     <div className="bike-station-details-image pb-2">
-          <img src="../bike-station-details.jpg" class="img-fluid" alt="Description of the image"></img>
-       </div>
+                      <img src="../bike-station-details.jpg" class="img-fluid" alt="Description of the image"></img>
+                    </div>
                     <div>
                       <button
                         onClick={() => {
@@ -121,21 +121,39 @@ function StationDetails() {
                       </button>
                     </div>
                     {city.location && (
-            <div className="green-text-bubble-station p-2 pb-3">Located in {city.location.city}...<br></br></div>
-          )}
-           <div className="light-green-text-bubble-station p-2 pb-3">
-            In the network, "{city.name}."
-           </div>
-           <div className="green-text-bubble-station-long p-2 pb-3">There are currently {station.free_bikes} free bikes at this station.
-          </div>
-          <div className="light-green-text-bubble-station-long p-2 pb-4">
-          The station details were last updated on {formatDateTime(station.timestamp)}.
-          <br></br>
-          </div>
-                    {city.id}
-                    <p>Free Bikes: {station.free_bikes}</p>
-                    <p>Last Updated: {formatDateTime(station.timestamp)}</p>
-                    <p>
+                      <div className="green-text-bubble-station p-2 pb-3">Located in {city.location.city}...<br></br></div>
+                    )}
+                    <div className="light-green-text-bubble-station p-2 pb-3">
+                      In the network, "{city.name}."
+                    </div>
+                    <div className="green-text-bubble-station-long p-2 pb-3">There are currently {station.free_bikes} free bikes at this station.
+                    </div>
+                    <div className="light-green-text-bubble-station-long p-2 pb-4">
+                      The station details were last updated on {formatDateTime(station.timestamp)}.
+                      <br></br>
+                    </div>
+                    <br></br>
+                    <h3>This station is {" "}
+                      {userLocation
+                        ? calculateDistance(
+                          userLocation.latitude,
+                          userLocation.longitude,
+                          station.latitude,
+                          station.longitude
+                        ).toFixed(2)
+                        : "-"} km from you </h3>
+                    <button type="button" class="btn btn-success">
+                      <a
+                        className="white-text-button"
+                        href={getGoogleMapsLink(station.latitude, station.longitude)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Click here to get directions to the station!
+                      </a>
+                    </button>
+
+                    {/* <p>
                       Location:{" "}
                       <a
                         href={getGoogleMapsLink(station.latitude, station.longitude)}
@@ -144,42 +162,37 @@ function StationDetails() {
                       >
                         {`${station.latitude}, ${station.longitude}`}
                       </a>
-                    </p>
-                    <p>
-                      Distance from you (km):{" "}
-                      {userLocation
-                        ? calculateDistance(
-                          userLocation.latitude,
-                          userLocation.longitude,
-                          station.latitude,
-                          station.longitude
-                        ).toFixed(2)
-                        : "-"}
-                    </p>
-                    <p><h4>Reviews</h4></p>
+                    </p> */}
+
                     <div>
+                      <br></br>
                       <h3>Likes</h3>
-                      <div className="list-group">
-                        {likes &&
-                          likes
-                            .filter((like) => like.stationId === station.id)
-                            .map((like) => (
-                              <Link
-                                key={like._id}
-                                to={`/profile/${like.user._id}`}
-                                className="list-group-item list-group-item-action"
-                              >
-                                {/* {//for some reason I'm not able to get user.firstName or user.lastName} */}
-                                {like.user.username}
-                              </Link>
-                            ))
-                        }
-                      </div>
-                      <pre>{JSON.stringify(likes, null, 2)}</pre>
+                      {likes && likes.length > 0 ? (
+                        <div>
+                          This station has been liked by...
+                          <div className="list-group">
+                            {likes
+                              .filter((like) => like.stationId === station.id)
+                              .map((like) => (
+                                <Link
+                                  key={like._id}
+                                  to={`/profile/${like.user._id}`}
+                                  className="list-group-item list-group-item-action"
+                                >
+                                  {/* {//for some reason I'm not able to get user.firstName or user.lastName} */}
+                                  {like.user.username}
+                                </Link>
+                              ))}
+                              <br></br>
+                              {/* <div className="light-green-text-bubble-station">Click on a user that liked this station to see their profile!</div> */}
+                          </div>
+                        </div>
+                      ) : (
+                        <p>This station has not been liked by anyone yet.</p>
+                      )}
+                      {/* <pre>{JSON.stringify(likes, null, 2)}</pre> */}
                     </div>
-                    {/* Add Reviews section if available */}
-                    {/* You can customize the Reviews section based on your data structure */}
-                    {/* Example: <p>Reviews: {station.reviews}</p> */}
+                    <br></br>
                   </div>
                 ))}
             </div>

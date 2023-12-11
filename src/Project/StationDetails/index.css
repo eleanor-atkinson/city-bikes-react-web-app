@@ -77,4 +77,10 @@
     text-overflow: ellipsis;
   }
 
+  .white-text-button {
+    color: white;
+    text-decoration: none; /* Removes underline */
+    font-weight: bold; 
+    /* font-family: 'Monaco', monospace; */
+  }
  
