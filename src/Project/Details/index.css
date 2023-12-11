@@ -1,0 +1,62 @@
+
+
+/* Style for table header cells */
+
+.links {
+    color: white;
+}
+
+.table a {
+    color: white;
+}
+
+.table th {
+    background-color: green; /* Green background */
+    color: white; /* White text color */
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Style for table body cells */
+  .table td {
+    background-color: green; /* Green background */
+    color: white; /* White text color */
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  /* Add alternating background color to table rows */
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Additional style for small screen table */
+  .small-screen-table th,
+  .small-screen-table td {
+    background-color: green; /* Green background */
+    color: white; /* White text color */
+    padding: 10px;
+  }
+  
+  /* Add alternating background color to small screen table rows */
+  .small-screen-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .green-card-one {
+    background-color: rgb(34, 139, 34);
+    color: white;
+    /* padding: 2em; */
+    width: 30%;
+    clip-path: polygon(0% 25%, 100% 25%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
+    /* clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 2% 49%, 0% 0%); */
+  }
+
+  .background-color-card {
+    background-color: rgb(46, 186, 46);
+    color: white;
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
+    width: 60%;
+    padding: 2em;
+    padding-bottom: 4em;
+  }

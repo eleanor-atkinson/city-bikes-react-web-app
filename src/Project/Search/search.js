@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import * as client from "./client";
+import * as client from "../client";
 import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
+import "./index.css";
 
 const Search = () => {
   const { searchTerm } = useParams();
@@ -64,20 +65,20 @@ const Search = () => {
           onChange={(event) => setQuery(event.target.value)}
         />
         <button
-          className="btn btn-primary"
+          className="btn btn-success"
           type="button"
           onClick={handleSearch}
         >
           Search
         </button>
       </div>
-
-      <h1>Results</h1>
+      <h2>Results:</h2>
       {results && results.length > 0 ? (
-        <table className="table">
+        <table className="table green-card-one">
           <thead>
+          <div className="small-title-text">All of the Bike Networks in Your City!</div>
             <tr>
-              <th>Name</th>
+              <th>Bike Network Name</th>
               
               <th>Location</th>
             </tr>
@@ -86,19 +87,31 @@ const Search = () => {
             {results.map((result) => (
               <tr key={result.id}>
                 <td>
-                  <Link to={`/details/${result.id}`}>{result.name}</Link>
+                  <Link className="green-link" to={`/details/${result.id}`}>{result.name}</Link>
                 </td>
              
                 <td>
                   {result.location.city}, {result.location.country}
                 </td>
+               
+  
               </tr>
+             
             ))}
           </tbody>
+          <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
         </table>
       ) : (
         <p>No results found</p>
       )}
+      {results && results.length > 0 ? (
+      <div className="background-color-card">
+      <h2>Click on a bike network to learn more!</h2>
+      </div>
+      ) : ( " ")}
     </div>
   );
 };

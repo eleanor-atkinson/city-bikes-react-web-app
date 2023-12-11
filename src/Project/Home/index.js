@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from "../useAuth";
 import { MdDirectionsBike } from "react-icons/md";
 import "./index.css";
+import { FaGrinHearts } from "react-icons/fa";
+import { SlLike } from "react-icons/sl";
 
 function Home() {
   // State variables
@@ -59,28 +61,38 @@ function Home() {
         </div>
       )}
       <MdDirectionsBike className="bike-icon"/>
-      <hr></hr>
-      <h3>Find bike stations in any city and share your favorites!</h3>
-      <div className="button btn btn-info"> <Link to={`/search`} className="white-text-link">Click here to search for a city!</Link></div>
-      <hr></hr>
+      <MdDirectionsBike className="bike-icon-two"/>
+      <MdDirectionsBike className="bike-icon-three"/>
+      <MdDirectionsBike className="bike-icon-four"/>
+      <MdDirectionsBike className="bike-icon-five"/>
+      <div className="green-card-one">
+      <div className="title-text">Find bike stations in any city and share your favorites!</div>
+      <div className="button btn btn-light button-padding"> <Link to={`/search`} className="white-text-link">Click here to search for a city!</Link></div>
+      </div>
       {newestMember && (
         <div>
-          <h2>Welcome Our Newest Member!</h2>
-          <p>Username: {newestMember.username}</p>
-          <p>Date Joined: {new Date(newestMember.dateOfJoin).toLocaleDateString()}</p>
+          <div className="background-color-card">
+          <div className={"float-end smile-icon"}> <FaGrinHearts /> </div>
+          <div className="title-text">Welcome Our Newest Member!</div>
+          <p>Their username is {newestMember.username}</p>
+          
+          <p>They joined on {new Date(newestMember.dateOfJoin).toLocaleDateString()}</p>
           <p>
-            <Link to={`/profile/${newestMember._id}`}>View {newestMember.username}'s profile</Link>
+            <Link className="link-text" to={`/profile/${newestMember._id}`}>View {newestMember.username}'s profile!</Link>
           </p>
+          </div>
           {/* Display the user's most recent like if available */}
           {authData && authData.currentUser && authData.userLikes.length > 0 && (
-            <div>
-              <h2> Your Most Recently Liked Station:</h2>
-              <p><b>{authData.currentUser.username}'s</b> most recently liked station!</p>
-              <p>Name: {authData.userLikes.sort((a, b) => new Date(b.dateOfLike) - new Date(a.dateOfLike))[0].station.name}
-              in the glorious city of  {/**/} </p>
-              
-              {/* Add other relevant information about the station */}
+            <div className="green-card-one">
+              <div className={"float-end thumbs-up-icon"}> <SlLike /> </div>
+              <div className="title-text"> Your Most Recently Liked Station:</div>
+              <p><b>{authData.currentUser.username}'s</b> most recently liked station is...
+              {authData.userLikes.sort((a, b) => new Date(b.dateOfLike) - new Date(a.dateOfLike))[0].station.name}
+              !  {/**/} </p>
+              <br></br>
+              <br></br>
             </div>
+            
           )}
         </div>
       )}

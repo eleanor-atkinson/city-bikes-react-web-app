@@ -1,8 +1,102 @@
+.smile-icon {
+  font-size: 6vw; /* 5% of the viewport width. */
+  padding-left: 1em;
+}
+
+.thumbs-up-icon {
+  font-size: 6vw; /* 5% of the viewport width. */
+  padding-left: 1em;
+  vertical-align: top;
+}
+
 .bike-icon {
+    font-size: 6vw; /* 5% of the viewport width. */
+    color: rgb(112, 228, 112);
+  }
+
+  .bike-icon-two {
     font-size: 5vw; /* 5% of the viewport width. */
-    color: palevioletred;
+    color: rgb(50, 205, 50);
+    vertical-align: bottom;
+    margin-left: 2%;
+  }
+
+  .bike-icon-three {
+    font-size: 4vw; /* 5% of the viewport width. */
+    color: rgb(0, 128, 0);
+    vertical-align: bottom;
+    margin-left: 2%;
+  }
+
+  .bike-icon-four {
+    font-size: 3vw; /* 5% of the viewport width. */
+    color: rgb(0, 100, 0);
+    vertical-align: bottom;
+    margin-left: 2%;
+  }
+
+  .bike-icon-five {
+    font-size: 2vw; /* 5% of the viewport width. */
+    color: rgb(0, 64, 0);
+    vertical-align: bottom;
+    margin-left: 2%;
   }
 
   .white-text-link {
+    color:  rgb(34, 139, 34);
+    font-weight: bold;
+    /* margin-bottom: 3vm; */
+  }
+
+  .background-color-card {
+    background-color: rgb(46, 186, 46);
     color: white;
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
+    width: 60%;
+    padding: 2em;
+    padding-bottom: 4em;
+  }
+
+.green-card-one {
+    background-color: rgb(34, 139, 34);
+    color: white;
+    padding: 2em;
+    width: 60%;
+    clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
+    /* clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 2% 49%, 0% 0%); */
+  }
+
+  .title-text {
+    font-weight: bold;
+    padding-bottom: 0.5em;
+    font-size: 15px; /* Default font size */
+  
+    /* Adjust font size for smaller screens */
+    @media (max-width: 600px) {
+      font-size: 4vw; /* Increase font size for screens up to 600px */
+    }
+  
+    /* Adjust font size for larger screens */
+    @media (min-width: 1200px) {
+      font-size: 2vw; /* Decrease font size for screens larger than 1200px */
+    }
+  }
+
+  .green-card {
+    background-color: rgb(34, 139, 34);
+    color: white;
+    padding: 1em;
+    width: 50%;
+  }
+
+  .button-padding {
+    margin-bottom: 3em;
+  }
+
+  .link-text {
+   color: white;
+  }
+
+  .big-title-text {
+    font-size: 5vw; 
   }

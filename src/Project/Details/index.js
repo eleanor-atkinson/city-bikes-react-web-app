@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import moment from "moment";
 import * as client from "../client";
+import "./index.css";
 
 function Details() {
   const [city, setCity] = useState(null);
@@ -94,50 +95,86 @@ function Details() {
   return (
     <div>
       <br></br>
-      <h1>Network Details</h1>
       {city ? (
         <>
-          <h2>{city.name}</h2>
-          <p>City: {city.location.city}</p>
-          <p>Country: {city.location.country}</p>
+          <h1>{city.name} Network Details</h1>
+          <div className="green-card-one">Located in the one of a kind city of <b>{city.location.city}</b>!</div>
+          {/* <div className="background-color-card">In the beautiful country of: <b>{city.location.country}</b></div> */}
+          <br></br>
 
-          <h2>Stations ordered by proximity to you</h2>
+          <h2>Here are all the bike stations in the network ordered by proximity to you...</h2>
           {city.stations && city.stations.length > 0 ? (
-            <table className="table">
+            <>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Station</th>
+                    <th>Free Bikes</th>
+                    <th>Last Updated</th>
+                    <th>Location</th>
+                    <th>Distance from you (km)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortStationsByDistance(city.stations).map((station) => (
+                    <tr key={station.id}>
+                      <td>
+                        <Link className="links" to={`/details/${resultId}/stationdetails/${station.id}`}>
+                          {station.name}
+                        </Link>
+                      </td>
+
+                      <td>{station.free_bikes}</td>
+                      <td>{formatDateTime(station.timestamp)}</td>
+                      <td>
+                        <a 
+                          href={getGoogleMapsLink(
+                            station.latitude,
+                            station.longitude
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {`${station.latitude}, ${station.longitude}`}
+                        </a>
+                      </td>
+                      <td>
+                        {userLocation
+                          ? calculateDistance(
+                              userLocation.latitude,
+                              userLocation.longitude,
+                              station.latitude,
+                              station.longitude
+                            ).toFixed(2)
+                          : "-"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <div className="small-screen-table">
               <thead>
-                <tr>
-                  <th>Station</th>
-                  <th>Average User Review</th>
-                  <th>Free Bikes</th>
-                  <th>Last Updated</th>
-                  <th>Location</th>
-                  <th>Distance from you (km)</th>
-                </tr>
-              </thead>
-              <tbody>
+        <tr>
+          <th>Station</th>
+          <th>Free Bikes</th>
+          <th>Distance from you (km)</th>
+        </tr>
+      </thead>
+      <tbody>
                 {sortStationsByDistance(city.stations).map((station) => (
-                  <tr key={station.id}>
+                  <tr key={station.id} className="station-details-small-screen">
                     <td>
-                      <Link to={`/details/${resultId}/stationdetails/${station.id}`}>
-                        {station.name}
-                      </Link>
-                    </td>
-                    <td> <h1>Reviews</h1></td>
-                    <td>{station.free_bikes}</td>
-                    <td>{formatDateTime(station.timestamp)}</td>
-                    <td>
-                      <a
-                        href={getGoogleMapsLink(
-                          station.latitude,
-                          station.longitude
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {`${station.latitude}, ${station.longitude}`}
-                      </a>
+                    <Link to={`/details/${resultId}/stationdetails/${station.id}`}>
+                      <p>{station.name}</p>
+                    </Link>
                     </td>
                     <td>
+                    <p>Free Bikes: {station.free_bikes}</p>
+                    </td>
+                    <td>
+                    <p>
+                      Distance from you:{" "}
                       {userLocation
                         ? calculateDistance(
                             userLocation.latitude,
@@ -145,12 +182,15 @@ function Details() {
                             station.latitude,
                             station.longitude
                           ).toFixed(2)
-                        : "-"}
+                        : "-"}{" "}
+                      km
+                    </p>
                     </td>
-                  </tr>
+                    </tr>
                 ))}
-              </tbody>
-            </table>
+                    </tbody>
+              </div>
+            </>
           ) : (
             <p>No stations found for this city</p>
           )}

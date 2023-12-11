@@ -8,7 +8,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 // import store from "./store";
 // import { Provider } from "react-redux";
 import Navigation from "./Navigation";
-import Search from "./search";
+import Search from "./Search/search";
 import Details from "./Details";
 import StationDetails from "./StationDetails";
 import React from "react";
@@ -19,6 +19,7 @@ import Signin from "./users/signin";
 import Profile from "./profile";
 import UserTable from "./users/table";
 import Signup from "./users/signup";
+import "./index.css";
 
 
 // import CurrentUser from "./users/currentUser";
@@ -33,7 +34,7 @@ function Project() {
             <div>
                     <Navigation />
                     </div>
-                    <div className="container-fluid px-5">
+                    <div className="container-fluid px-5 background-color">
                             <Routes>
                             <Route path="/*" element={<Navigate to="/home"/>} />
                                 <Route path="/home" element={<Home />} />
