@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import * as service from "../users/client";
 import * as client from "../client";
+import "./index.css";
+import { BsPersonHearts } from "react-icons/bs";
 
 function ProfileOthers() {
     const { userId } = useParams();
@@ -34,17 +36,17 @@ function ProfileOthers() {
     return (
         <div>
             <br></br>
-            {/* //         <button onClick={followUser} className="float-end">
-    //           Follow
-    //         </button> */}
-    <h1><p>Check out {user.username}'s Profile!</p></h1>
-    <br></br>
+    <h1>Check out {user.username}'s Profile!</h1>
+    <div className="profile-others-image">
+    <BsPersonHearts  />
+    </div>
+                    <br></br>
     <h3>Rider Details</h3>
     <div className="list-group">
-        <div className="list-group-item">
+        <div className="list-group-item list-group-item-danger">
         <h3>{user.username}</h3>
         </div>
-        <div className="list-group-item"><p>
+        <div className="list-group-item list-group-item-danger"><p>
              Joined on {formatJoinDate(user.dateOfJoin)}  </p></div>
     </div>
     <br></br>
@@ -54,13 +56,13 @@ function ProfileOthers() {
           <Link
             key={station.id}
             to={`/details/${station.networkId}/stationdetails/${station.id}`}
-            className="list-group-item list-group-item-action"
+            className="list-group-item list-group-item-action list-group-item-success"
           >
             {station.name} ({station.networkId})
           </Link>
         ))}
       </div>
-           <pre>{JSON.stringify(user, null, 2)}</pre>
+           {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
          </div>
        );
 }

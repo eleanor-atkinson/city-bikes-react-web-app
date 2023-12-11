@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as service from "../client";
 import { current } from "@reduxjs/toolkit";
+import "./index.css";
 
 function Profile() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -72,9 +73,11 @@ function Profile() {
         <div>
           <h1>Check out your profile!</h1>
           <br></br>
-          {currentUser && (
+          {/* {currentUser && (
             <pre>{JSON.stringify(currentUser, null, 2)}</pre>
-          )}
+          )} */}
+          <div className="light-green-text-bubble-profile pt-2">Public Information:</div>
+          <br></br>
           {currentUser && (
             <div>
               <h3>Rider Details</h3>
@@ -98,8 +101,11 @@ function Profile() {
                 }
               </div>
               <br></br>
-              <hr></hr>
-              <h3>Edit your profile</h3>
+              <div className="green-text-bubble-profile pt-2">
+                Private Information.
+              </div>
+              <br></br>
+              <h3>Click the input fields to edit your profile:</h3>
               <form>
                 <div className="col-12">
                   <label htmlFor="password" className="form-label">
@@ -167,14 +173,18 @@ function Profile() {
                 </button>
               </form>
               <br></br>
+              
               {currentUser.role === "MODERATOR" && (
                 <>
+                Because you are a moderator, you can add and remove users by clicking here.
                   <Link to="/admin/users" className="btn btn-warning w-100">
                     Users
                   </Link>
                 </>
               )}
-              <hr />
+              <br></br>
+              <br></br>
+              {/* <hr />
               <h3>Stations I like</h3>
               <div className="list-group">
                 {
@@ -188,7 +198,7 @@ function Profile() {
               </div>
               <pre>
                 {JSON.stringify(likes, null, 2)}
-              </pre>
+              </pre> */}
 
             </div>
           )}
