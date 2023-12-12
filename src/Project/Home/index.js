@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { useAuth } from "../useAuth";
 import { MdDirectionsBike } from "react-icons/md";
 import "./index.css";
-import { FaGrinHearts } from "react-icons/fa";
-import { SlLike } from "react-icons/sl";
 import { FaHeart } from "react-icons/fa";
+import { FaJenkins } from "react-icons/fa6";
+import { FaLinux } from "react-icons/fa6";
+import { BsEmojiSmile } from "react-icons/bs";
 
 function Home() {
   // State variables
@@ -71,48 +72,55 @@ function Home() {
         <div className="">Find bike stations in any city... </div>
         <div> Share your favorites! <FaHeart /></div>
         <div className="styling-for-click">
-        <div className="button btn btn-light"> <Link to={`/search`} className="white-text-link">Click here to search for a city!</Link></div>
+          <div className="button btn btn-light"> <Link to={`/search`} className="white-text-link">Click here to search for a city!</Link></div>
         </div>
         <br></br>
         <br></br>
       </div>
+      <BsEmojiSmile className="smile-icon-one"/>
       {newestMember && (
         <div>
           <div className="light-green-text-bubble">
             <br></br>
-           
-            {/* <div className={"float-end smile-icon"}> <FaGrinHearts /> </div> */}
-            
-            <div className="list-group"> <b>Welcome Our Newest Member!</b>
-            
-            <hr></hr>
-            <p>
-              
-            Their username is {newestMember.username}</p>
 
-            <p>They joined on {new Date(newestMember.dateOfJoin).toLocaleDateString()}</p>
-            <p>
-              <Link className="link-text" to={`/profile/${newestMember._id}`}>View {newestMember.username}'s profile!</Link>
-            </p>
+            {/* <div className={"float-end smile-icon"}> <FaGrinHearts /> </div> */}
+
+            <div className="list-group"> <b>Welcome Our Newest Member!</b>
+
+              <hr></hr>
+              <p>
+
+                Their username is {newestMember.username}</p>
+
+              <p>They joined on {new Date(newestMember.dateOfJoin).toLocaleDateString()}</p>
+             <p> <div className="btn btn-success float-start">
+                <Link className="link-text" to={`/profile/${newestMember._id}`}>View {newestMember.username}'s profile!</Link>
+              </div></p>
             </div>
             <br></br>
           </div>
+          <FaJenkins className="jenkins-icon" />
+          <br></br>
           {/* Display the user's most recent like if available */}
           {authData && authData.currentUser && authData.userLikes.length > 0 && (
+            <div>
             <div className="green-text-bubble">
               <br></br>
               {/* <div className={"float-end thumbs-up-icon"}> <SlLike /> </div> */}
-            
+
               <div className="title-text"> Your Most Recently Liked Station:</div>
-              <br></br>
+              <hr></hr>
               <p><b>{authData.currentUser.username}'s</b> most recently liked station is...
                 {authData.userLikes.sort((a, b) => new Date(b.dateOfLike) - new Date(a.dateOfLike))[0].station.name}
                 !  {/**/} </p>
               <br></br>
               <br></br>
+              
             </div>
-
+            <FaLinux className="linux-icon" />
+            </div>
           )}
+         
         </div>
       )}
     </div>

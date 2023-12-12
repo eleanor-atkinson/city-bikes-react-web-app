@@ -10,7 +10,7 @@
     padding-bottom: 20px;
     border-radius: 10px;
     margin: 0px 0;
-    width: 90% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    width: 40% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
     clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 50% 80%, 25% 100%, 25% 80%, 0% 80%);
     font-size: min(max(1.5vw, 16px), 4vw);
   }
@@ -28,7 +28,7 @@
     padding-bottom: 20px;
     border-radius: 10px;
     margin: 0px 0;
-    width: 85% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
+    width: 50% !important; /* Adjust the width as needed  clip-path: polygon(0 0, 100% 0, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%); */
     clip-path: polygon(0% 7%, 100% 7%, 100% 80%, 75% 80%, 75% 100%, 50% 80%, 0% 80%);
     font-size: min(max(1.5vw, 16px), 4vw); /* 1.5vw is the default font size based on the viewport width.
     14px is the minimum font size.
@@ -40,4 +40,11 @@
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .penguin-profile {
+    font-size: 7vw; /* 5% of the viewport width. */
+    color: black;
+    vertical-align: top;
+    margin-left: 4%
   }

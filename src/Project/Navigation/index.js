@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
+import { RiHome4Fill } from "react-icons/ri";
 import { FaBook } from "react-icons/fa";
 import { BsCalendar4Week } from "react-icons/bs";
 import { FaPersonCircleQuestion } from "react-icons/fa6";
@@ -9,14 +9,19 @@ import { VscThreeBars } from "react-icons/vsc";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FaFaceKissWinkHeart } from "react-icons/fa6";
+import { BsFillPatchQuestionFill } from "react-icons/bs";
+import { PiPencilSimpleLineFill } from "react-icons/pi";
+import { FaPersonBiking } from "react-icons/fa6";
 
 function Navigation() {
     const links = {
-        home: <CgProfile />,
-        search: <FaPersonCircleQuestion />,
+        home: <RiHome4Fill />,
+        search: <BsFillPatchQuestionFill />,
         login: <FaPersonCircleQuestion />,
-        register: <FaBook />,
-        profile: <BsCalendar4Week />,
+        register: <PiPencilSimpleLineFill />,
+        profile: <FaPersonBiking />,
+        credits: <FaFaceKissWinkHeart />,
     };
     const { pathname } = useLocation();
     const navigate = useNavigate();
@@ -45,7 +50,7 @@ function Navigation() {
                                 key={index}
                                 onClick={() => handleBreadcrumbClick(link)}
                                 variant="outline-light"
-                                className={`font-weight-bold ${link === "profile" && isUserProfile && "active"} ${link !== "profile" && pathname.includes(link) && "active"}`}
+                                className={`font-weight-bold pl-2 ${link === "profile" && isUserProfile && "active"} ${link !== "profile" && pathname.includes(link) && "active"}`}
                             >
                                 {icon} {link}
                             </Button>

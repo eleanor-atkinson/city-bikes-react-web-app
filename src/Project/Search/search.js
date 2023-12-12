@@ -55,6 +55,10 @@ const Search = () => {
   return (
     <div>
       <br></br>
+      <div className="bike-station-details-image pb-2">
+                      <img src="../bike-search.jpg" class="img-fluid" alt="Description of the image"></img>
+                    </div>
+                    <br></br>
       <h1>Search</h1>
       <div className="input-group mb-3">
         <input

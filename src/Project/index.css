@@ -4,3 +4,9 @@
     
   }
 
+  body {
+    overflow: hidden; /* Hide scrollbars */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+  }
+

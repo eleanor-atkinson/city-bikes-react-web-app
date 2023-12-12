@@ -13,6 +13,27 @@
   padding-top: 5px;
 }
 
+.jenkins-icon {
+  font-size: 10vw; /* 5% of the viewport width. */
+  color: black;
+  vertical-align: top;
+  margin-left: 9%;
+}
+
+.linux-icon {
+  font-size: 10vw; /* 5% of the viewport width. */
+  color: black;
+  vertical-align: top;
+  margin-left: 61%;
+}
+
+.smile-icon-one {
+  font-size: 10vw; /* 5% of the viewport width. */
+  color: black;
+  vertical-align: top;
+  margin-left: 61%;
+}
+
 .bike-icon {
     font-size: 6vw; /* 5% of the viewport width. */
     color: rgb(112, 228, 112);

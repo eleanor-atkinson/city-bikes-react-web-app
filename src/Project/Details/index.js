@@ -97,6 +97,10 @@ function Details() {
       <br></br>
       {city ? (
         <>
+        <div className="bike-station-details-image pb-2">
+                      <img src="../network-details.jpg" class="img-fluid" alt="Description of the image"></img>
+                    </div>
+                    <br></br>
           <h1>{city.name} Network Details</h1>
           <div className="green-text-bubble"><br></br>Located in the one of a kind city of <b>{city.location.city}</b>!<br></br><br></br></div><br></br>
           <div className="light-green-text-bubble"><br></br>Click on a bike station to learn more!<br></br><br></br></div>

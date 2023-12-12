@@ -46,6 +46,7 @@ function UserTable() {
     useEffect(() => { fetchUsers(); }, []);
     return (
         <div>
+            <br></br>
             <h1>User List</h1>
             <table className="table">
             <thead>
@@ -53,6 +54,8 @@ function UserTable() {
                         <th>Username</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Role</th>
+                        <th>Add/Remove</th>
                     </tr>
                     <tr>
                     <td>

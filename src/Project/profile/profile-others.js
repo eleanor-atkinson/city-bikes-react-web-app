@@ -50,20 +50,24 @@ function ProfileOthers() {
              Joined on {formatJoinDate(user.dateOfJoin)}  </p></div>
     </div>
     <br></br>
-    <h3>Check out {user.username}'s liked stations...</h3>
-      <div className="list-group">
-        {likedStations.map((station) => (
-          <Link
-            key={station.id}
-            to={`/details/${station.networkId}/stationdetails/${station.id}`}
-            className="list-group-item list-group-item-action list-group-item-success"
-          >
-            {station.name} ({station.networkId})
-          </Link>
-        ))}
-      </div>
-           {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
-         </div>
+    {likedStations.length > 0 && (
+        <div>
+          <h3>Check out {user.username}'s liked stations...</h3>
+          <div className="list-group">
+            {likedStations.map((station) => (
+              <Link
+                key={station.id}
+                to={`/details/${station.networkId}/stationdetails/${station.stationId}`}
+                className="list-group-item list-group-item-action list-group-item-success"
+              >
+                {station.name} ({station.networkId})
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+    </div>
        );
 }
 

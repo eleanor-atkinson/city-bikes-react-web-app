@@ -20,6 +20,7 @@ import Profile from "./profile";
 import UserTable from "./users/table";
 import Signup from "./users/signup";
 import "./index.css";
+import API from "./api-credits";
 
 
 // import CurrentUser from "./users/currentUser";
@@ -46,6 +47,7 @@ function Project() {
                                 <Route path="/profile" element={<Profile />} />
                                 <Route path="profile/:userId" element={<ProfileOthers />} />
                                 <Route path="/details/:resultId" element={<Details/>} />
+                                <Route path="/credits" element={<API/>} />
                                 <Route path="/details/:resultId/stationdetails/:stationId" element={<StationDetails />} />
                             </Routes>
                         </div>
