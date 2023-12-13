@@ -48,6 +48,7 @@ function UserTable() {
         <div>
             <br></br>
             <h1>User List</h1>
+            <h3>Note that this screen can only be viewed on a laptop as it is too easy to accidentally remove users on small screens.</h3>
             <table className="table">
             <thead>
                     <tr>
