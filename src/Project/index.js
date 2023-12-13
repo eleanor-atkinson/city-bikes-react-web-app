@@ -35,7 +35,7 @@ function Project() {
             <div>
                     <Navigation />
                     </div>
-                    <div className="container-fluid px-5 background-color">
+                    <div className="container-fluid px-3 background-color">
                             <Routes>
                             <Route path="/*" element={<Navigate to="/home"/>} />
                                 <Route path="/home" element={<Home />} />

@@ -166,7 +166,7 @@ function Details() {
         <tr>
           <th>Station</th>
           <th>Free Bikes</th>
-          <th>Distance from you (km)</th>
+         
         </tr>
       </thead>
       <tbody>
@@ -182,20 +182,7 @@ function Details() {
                     <td>
                     <p>{station.free_bikes}</p>
                     </td>
-                    <td>
-                    <p>
-                      {" "}
-                      {userLocation
-                        ? calculateDistance(
-                            userLocation.latitude,
-                            userLocation.longitude,
-                            station.latitude,
-                            station.longitude
-                          ).toFixed(2)
-                        : "-"}{" "}
-                      km
-                    </p>
-                    </td>
+                 
                     </tr>
                 ))}
                     </tbody>
